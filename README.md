@@ -1,2 +1,136 @@
 # Create-PyTorch-Model-for-Raspberry-
 a Jupyter notebook for creating a PyTorch object recognition model that can run on a Raspberry Pi
+ 
+<h1 style="text-align: center;">
+  <p align="center">
+Les étapes préalables
+</h1></p>
+</br>
+<p align="left"> 
+
+Toutes les étapes préalables ont dejà été réalisées pour l'atelier elle sont ici pour information. </br>Vous pouvez donc pour l'atelier passer au point suivant: </br><p align="center"> **Création et preparation de votre environement virtuel python**</p>
+
+  ### *GitBash*
+pour que tout fonctionne nous devons installer certains programmes. En premier nous allons telecharger et installer l'application GitHub: 
+  
+- <a href="https://git-scm.com/"> Application GitHub </a>
+
+  Choisir la version correspondant à votre système d'exploitation. Ce programme permettra de pouvoir cloner des "repositories" GitHub dont nous aurons besoin par la suite 
+y compris le Github présent contenant tous les codes dans des jupyter nootebook pour l'entrainement de notre modèle.
+
+### *Python* 
+Ensuite télécharger et installer la version python 3.9.2 :
+ - <a href="https://www.python.org/downloads/release/python-392/"> Python 3.9.2 </a>
+
+  En effet certaines bibliothèques python que nous utiliserons dans l'entrainement de notre modèle ne fonctionne pas avec les dernières version de python. 
+</br>
+
+### *Utilisation des GPUs (mémoire de la carte graphique)*
+Cette étape n'est pas obligatoire mais fortement conseillé si vous souhaitez accéler l'apprentissage du modèle en utilisant l'accélaration des cartes vidéos.
+Cependant lors de la réalisation de cet atelier nous avons utiliser des versions spécifiques de CUDA et CuDNN pour que tout fonctionne avec le TensorFlow 2.8.
+Nous n'avons absolument pas testé avec les nouvelle version de CUDA et CuDNN. Cette étape à dejà été réalisée pour l'atelier mais si vous souhaitez le refaire
+suivez les instructions suivantes
+</br>
+##### *Installer CUDA 11.2*
+Il vous faudra vous rendre sur le site <a href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA</a> et télécharger et installer la version CUDA 11.2 
+
+##### *Installer CuDNN correspondant à votre CUDA*
+
+rendez-vous sur le site pour télécharger le <a href="https://developer.nvidia.com/rdp/cudnn-archive"> CuDNN</a> correspondant au CUDA 11.2. </br>
+Dézipper le fichier téléchargé et copier tout son contenu dans le dossier CUDA </br> généralement dans C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2
+
+
+
+ 
+<h1 style="text-align: center;">
+  <p align="center">
+    Création et preparation de votre environement virtuel python
+</h1></p>
+</br>
+<p align="left"> 
+
+
+## Les étapes
+<br />
+<b>Etape 1.</b> Créer un dossier de travail sur votre ordinateur (par exemple discoscope)
+<br/>
+<br/>
+<b>Etape 2.</b> ouvrir une invite de commande et se positionner dans le dossier que vous venez de créer</br>
+
+```
+cd discoscope
+```
+
+<b>Etape 3.</b> dans l'invite de commande cloner le repository actuel en tapant :
+
+```
+git clone https://github.com/brice-ronsin/mifobio_discoscope.git
+```
+
+
+<b>Etape 4.</b> Positionnez vous dans le dossier nouvellement crée 
+
+```
+cd mifobio_discoscope
+```
+
+
+<b>Etape 5.</b> Créer un nouvel environement virtuel python du nom que vous souhaitez, mais en utilisant le python 3.9
+
+```
+py -3.9 -m venv tflite (tflite ici, ou le nom que vous souhaitez)
+```
+
+
+<b>Etape 6.</b> Activate votre nouvel environement
+```
+source tflite/bin/activate # Linux
+.\tflite\Scripts\activate # Windows 
+  remplacer tflite par le nom de votre environnement
+```
+
+nous devons aussi installer la dépendance ipikernel.<br> 
+ipikernel est une dépendance très importante car elle vous permet d'associer votre environnement virtuel à votre notebook jupyter.<br> 
+Sans cette dépendance, quand vous lancerez jupyter notebook, ce dernier n'utilisera pas votre environnement virtuel.<br>   
+De plus, nous devons aussi créer un noyau Python (kernel) pour les notebooks Jupyter<br>  
+Alors que Jupyter garantit la disponibilité du noyau IPython par défaut, ipykernel vous permet d'utiliser différentes versions de Python<br>   
+ou même d'utiliser Python dans un environnement virtuel ou conda.<br>  
+Pour ajouter le python 3.9.2 nécéssaire à notre Jupyter Notebook, tapez "python -m ipykernel install --user --name=tflite".<br>  
+Cela permettra dans votre jupyter notebook d'utiliser le noyau dédié à votre environnemnt virtuel<br>
+<br/>
+<br/>
+<b>Etape 7.</b> Installer les dépendences et ajouter l'environnement virtuel au noyau kernel de notre jupyter notebook
+
+```
+pip install ipykernel
+```
+```
+python -m ipykernel install --user --name=tflite
+````
+<br/>
+<b>Etape 8.</b> Installer si vous ne l'avez pas sur votre ordinateur jupyter notebook et mettre à jour jupyterlab
+
+```
+pip install jupyter
+```
+```
+pip install jupyterlab==4.4.5
+````
+<br/>
+<b>Etape 9.</b> depuis l'invite de commande taper jupyter notebook pour ouvrir notebook
+
+```
+jupyter notebook
+```
+<br/>
+<b>Etape 10.</b> Collecter vos images en utilisant le Notebook <a href="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/1.Mifobio%202025%20collecte%20et%20annotation%20des%20images.ipynb">1.Mifobio 2025 collecte et annotation des images.ipynb</a> - Assurez vous de changer et d'utiliser le bon kernel pour votre environnement virtuel comme montré ci dessous
+<img src="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/pictures/jupyter_notebook.png"> 
+<br/>
+<br/><br/>
+<b>Etape 11.</b> une fois le premier notebook fini (images sauvegardées et annotées) <br/>
+nous alons commencer le process d'entrainement en ouvrant <a href="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/2.Mifobio_Train_model.ipynb">2. Mifobio_Train_model.ipynb</a> <br/>
+Ce notebook vous permettra de réaliser l'installation de Tensorflow Object Detection, la réalisation de détections, la sauvegarde et l'exportation de votre modèle.
+<br /><br/>
+<br/>
+<br/>
+
