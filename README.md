@@ -77,26 +77,8 @@ source pytorch/bin/activate # Linux
   remplacer tflite par le nom de votre environnement
 ```
 
-nous devons aussi installer la dépendance ipikernel.<br> 
-ipikernel est une dépendance très importante car elle vous permet d'associer votre environnement virtuel à votre notebook jupyter.<br> 
-Sans cette dépendance, quand vous lancerez jupyter notebook, ce dernier n'utilisera pas votre environnement virtuel.<br>   
-De plus, nous devons aussi créer un noyau Python (kernel) pour les notebooks Jupyter<br>  
-Alors que Jupyter garantit la disponibilité du noyau IPython par défaut, ipykernel vous permet d'utiliser différentes versions de Python<br>   
-ou même d'utiliser Python dans un environnement virtuel ou conda.<br>  
-Pour ajouter le python 3.9.2 nécéssaire à notre Jupyter Notebook, tapez "python -m ipykernel install --user --name=tflite".<br>  
-Cela permettra dans votre jupyter notebook d'utiliser le noyau dédié à votre environnemnt virtuel<br>
-<br/>
-<br/>
-<b>Etape 7.</b> Installer les dépendences et ajouter l'environnement virtuel au noyau kernel de notre jupyter notebook
 
-```
-pip install ipykernel
-```
-```
-python -m ipykernel install --user --name=tflite
-````
-<br/>
-<b>Etape 8.</b> Installer si vous ne l'avez pas sur votre ordinateur jupyter notebook et mettre à jour jupyterlab
+<b>Etape 7.</b> Installer si vous ne l'avez pas sur votre ordinateur jupyter notebook et mettre à jour jupyterlab
 
 ```
 pip install jupyter
@@ -112,13 +94,5 @@ jupyter notebook
 ```
 <br/>
 <b>Etape 10.</b> Collecter vos images en utilisant le Notebook <a href="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/1.Mifobio%202025%20collecte%20et%20annotation%20des%20images.ipynb">1.Mifobio 2025 collecte et annotation des images.ipynb</a> - Assurez vous de changer et d'utiliser le bon kernel pour votre environnement virtuel comme montré ci dessous
-<img src="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/pictures/jupyter_notebook.png"> 
-<br/>
-<br/><br/>
-<b>Etape 11.</b> une fois le premier notebook fini (images sauvegardées et annotées) <br/>
-nous alons commencer le process d'entrainement en ouvrant <a href="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/2.Mifobio_Train_model.ipynb">2. Mifobio_Train_model.ipynb</a> <br/>
-Ce notebook vous permettra de réaliser l'installation de Tensorflow Object Detection, la réalisation de détections, la sauvegarde et l'exportation de votre modèle.
-<br /><br/>
-<br/>
-<br/>
+
 
