@@ -52,28 +52,28 @@ cd pytorch_models
 <b>Etape 3.</b> dans l'invite de commande cloner le repository actuel en tapant :
 
 ```
-git clone https://github.com/brice-ronsin/Create-PyTorch-Model-for-Raspberry-.git
+git clone https://github.com/brice-ronsin/pytorch_models_pi
 ```
 
 
 <b>Etape 4.</b> Positionnez vous dans le dossier nouvellement crée 
 
 ```
-cd mifobio_discoscope
+cd pytorch_models_pi
 ```
 
 
-<b>Etape 5.</b> Créer un nouvel environement virtuel python du nom que vous souhaitez, mais en utilisant le python 3.9
+<b>Etape 5.</b> Créer un nouvel environement virtuel python du nom que vous souhaitez,  en utilisant le python que vous avez installé (exemple avec python 3.13)
 
 ```
-py -3.9 -m venv tflite (tflite ici, ou le nom que vous souhaitez)
+py -3.13 -m venv pytorch (pytorch ici, ou le nom que vous souhaitez)
 ```
 
 
 <b>Etape 6.</b> Activate votre nouvel environement
 ```
-source tflite/bin/activate # Linux
-.\tflite\Scripts\activate # Windows 
+source pytorch/bin/activate # Linux
+.\pytorch\Scripts\activate # Windows 
   remplacer tflite par le nom de votre environnement
 ```
 
