@@ -52,7 +52,7 @@ cd pytorch_models
 <b>Etape 3.</b> dans l'invite de commande cloner le repository actuel en tapant :
 
 ```
-git clone https://github.com/brice-ronsin/mifobio_discoscope.git
+git clone https://github.com/brice-ronsin/Create-PyTorch-Model-for-Raspberry-.git
 ```
 
 
