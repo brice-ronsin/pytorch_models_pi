@@ -93,6 +93,8 @@ pip install jupyterlab==4.4.5
 jupyter notebook
 ```
 <br/>
-<b>Etape 10.</b> Collecter vos images en utilisant le Notebook <a href="https://github.com/brice-ronsin/mifobio_discoscope/blob/main/1.Mifobio%202025%20collecte%20et%20annotation%20des%20images.ipynb">1.Mifobio 2025 collecte et annotation des images.ipynb</a> - Assurez vous de changer et d'utiliser le bon kernel pour votre environnement virtuel comme montré ci dessous
+<b>Etape 10.</b> Collecter vos images en utilisant le Notebook :</br>
+<b>pytorch_model.ipynb </b></br>
+- Assurez vous de changer et d'utiliser le bon kernel pour votre environnement virtuel 
 
 
